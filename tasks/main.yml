@@ -24,4 +24,6 @@
         permanent: true
         state: enabled
       notify: restart firewalld
-  when: redis_allow_connect_other_host is defined
+  when:
+    - redis_allow_connect_other_host is defined
+    - redis_allow_connect_other_host
