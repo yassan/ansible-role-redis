@@ -16,7 +16,7 @@
   block:
     - name: allow redis port
       ufw:
-        port: "{{ redis_port }}"
+        port: "{{ redis_port | string }}"
         proto: tcp
         rule: allow
   when: redis_allow_connect_other_host | default(false)
