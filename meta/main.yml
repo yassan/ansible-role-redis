@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: redis
   author: yoshiaki tanaka
-  description: setup Redis server
+  description: Setup Redis server
   license: Apache
   min_ansible_version: "2.13"
   platforms:
