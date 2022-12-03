@@ -13,10 +13,10 @@
     state: started
     enabled: true
 - name: allow fiewwall
+  when: redis_allow_connect_other_host | default(false)
   block:
     - name: allow redis port
-      ufw:
+      community.general.ufw:
         port: "{{ redis_port | string }}"
         proto: tcp
         rule: allow
-  when: redis_allow_connect_other_host | default(false)
