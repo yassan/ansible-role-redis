@@ -1,18 +1,18 @@
 ---
-- name: install redis
+- name: Install redis
   ansible.builtin.apt:
     name: redis
-- name: create redis setting file
+- name: Create redis setting file
   ansible.builtin.blockinfile:
     path: "{{ redis_config_dir }}/redis.conf"
     block: "{{ redis_extra_cfg }}"
   notify: restart redis
-- name: redis is active and enabled on system startup
+- name: Service redis is active and enabled on system startup
   ansible.builtin.systemd:
     name: redis-server
     state: started
     enabled: true
-- name: allow fiewwall
+- name: Allow fiewwall
   when: redis_allow_connect_other_host | default(false)
   block:
     - name: allow redis port
