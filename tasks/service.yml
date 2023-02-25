@@ -1,0 +1,12 @@
+---
+- name: Service redis is active and enabled on system startup
+  ansible.builtin.systemd:
+    name: redis-server
+    state: started
+    enabled: true
+- name: allow redis port
+  community.general.ufw:
+    port: "{{ redis_port | string }}"
+    proto: tcp
+    rule: allow
+  when: redis_allow_connect_other_host | default(false)
